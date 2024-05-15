@@ -5,7 +5,6 @@
  */
 import { AssetStore } from './AssetStore'
 import { util } from '@kit.ArkTS'
-
 export class DeviceUtils {
   private static deviceIdCacheKey = "device_id_cache_key"
   private static deviceId = ""
@@ -23,7 +22,7 @@ export class DeviceUtils {
     }
     //如果AssetStore中未读取到，则随机生成32位随机码，然后缓存到AssetStore中
     if (deviceId) {
-      deviceId = util.generateRandomUUID(true).replace('-', '')
+      deviceId = util.generateRandomUUID(true).replace(new RegExp('-', "gm"), '')
       AssetStore.set(DeviceUtils.deviceIdCacheKey, deviceId)
     }
     DeviceUtils.deviceId = deviceId

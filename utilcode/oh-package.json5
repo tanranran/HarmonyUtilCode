@@ -1,6 +1,6 @@
 {
   "name": "@ranran/utilcode",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "一款高效的OpenHarmony/HarmonyOS工具包从Blankj/AndroidUtilCode 移植而来.封装了常用工具类,提供一系列快捷操作方法。",
   "keywords": [
     "工具类",
