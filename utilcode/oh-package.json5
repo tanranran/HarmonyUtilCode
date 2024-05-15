@@ -1,0 +1,20 @@
+{
+  "name": "@ranran/utilcode",
+  "version": "1.0.0",
+  "description": "一款高效的OpenHarmony/HarmonyOS工具包从Blankj/AndroidUtilCode 移植而来.封装了常用工具类,提供一系列快捷操作方法。",
+  "keywords": [
+    "工具类",
+    "JSON",
+    "Blankj",
+    "AndroidUtilCode"
+  ],
+  "main": "Index.ets",
+  "author": "tanranran",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/tanranran/HarmonyUtilCode.git",
+  "homepage": "https://github.com/tanranran",
+  "dependencies": {
+    "@ohos/crypto-js": "^2.0.3",
+    "class-transformer": "^0.5.1"
+  }
+}

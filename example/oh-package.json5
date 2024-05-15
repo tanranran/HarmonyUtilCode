@@ -1,0 +1,11 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "author": "tanranran",
+  "license": "",
+  "dependencies": {
+    "@ranran/utilcode": "1.0.0"
+  }
+}

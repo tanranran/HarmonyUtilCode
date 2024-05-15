@@ -1,0 +1,35 @@
+# Define project specific obfuscation rules here.
+# You can include the obfuscation configuration files in the current module's build-profile.json5.
+#
+# For more details, see
+#   https://gitee.com/openharmony/arkcompiler_ets_frontend/blob/master/arkguard/README.md
+
+# Obfuscation options:
+# -disable-obfuscation: disable all obfuscations
+# -enable-property-obfuscation: obfuscate the property names
+# -enable-toplevel-obfuscation: obfuscate the names in the global scope
+# -compact: remove unnecessary blank spaces and all line feeds
+# -remove-log: remove all console.* statements
+# -print-namecache: print the name cache that contains the mapping from the old names to new names
+# -apply-namecache: reuse the given cache file
+
+# Keep options:
+# -keep-property-name: specifies property names that you want to keep
+# -keep-global-name: specifies names that you want to keep in the global scope
+
+# 开启属性混淆。 如果你使用这个选项，那么所有的属性名都会被混淆
+-enable-property-obfuscation
+#开启顶层作用域名称混淆。如果你使用这个选项，那么所有的顶层作用域的名称都会被混淆，除了下面场景:
+#被import/export的名称不会被混淆。
+#当前文件找不到声明的名称不会被混淆。
+#被保留选项指定的顶层作用域名称不会被混淆。
+#系统API列表中的顶层作用域名称不会被混淆。
+-enable-toplevel-obfuscation
+#去除不必要的空格符和所有的换行符。如果使用这个选项，那么所有代码会被压缩到一行。
+#注意：release模式构建的应用栈信息仅包含代码行号，不包含列号，因此compact功能开启后无法依据报错栈中的行号定位到源码具体位置。
+#-compact
+-remove-log
+#将名称缓存保存到指定的文件路径。名称缓存包含名称混淆前后的映射。
+-print-namecache obfuscation-namecache.json
+#删除文件中的所有注释，包括单行、多行，及JsDoc注释。以下场景除外： 声明文件中，在-keep-comments中配置的类、方法、struct、枚举等名称上方的JsDoc注释
+-remove-comments

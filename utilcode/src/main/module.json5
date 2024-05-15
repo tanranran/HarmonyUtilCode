@@ -1,0 +1,16 @@
+{
+  "module": {
+    "name": "utilcode",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet",
+      "2in1"
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.STORE_PERSISTENT_DATA"
+      }
+    ]
+  }
+}

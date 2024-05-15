@@ -1,0 +1,11 @@
+{
+  "app": {
+    "bundleName": "com.ranran.utilcode",
+    "patchVersionCode": 2000072,
+    "versionCode": 1000000
+  },
+  "module": {
+    "name": "entry",
+    "type": "hotreload"
+  }
+}
