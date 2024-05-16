@@ -7,7 +7,7 @@ import {AppUtils} from './AppUtils';
  * @date 2024/5/15 22:25
  * @description
  */
-class Utils {
+export class Utils {
   private constructor() {
   }
 
