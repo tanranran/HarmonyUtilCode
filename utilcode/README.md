@@ -23,7 +23,7 @@ getDeviceId              : 获取设备唯一识别码【卸载APP后依旧有�
 执行安装命令
 
 ```
-ohpm install @ranran/utilCode
+ohpm install @android/utilCode
 ```
 
 ## 📦使用
@@ -31,7 +31,7 @@ ohpm install @ranran/utilCode
 ### 1.在项目中引入插件
 
 ```
-import { DeviceUtils } from '@ranran/utilCode'
+import { DeviceUtils } from '@android/utilCode'
 ```
 
 类按需引入,项目需要使用那个就引入
@@ -39,7 +39,7 @@ import { DeviceUtils } from '@ranran/utilCode'
 #### 1.1 DeviceUtils的方法
 
 ``` typescript
-import { DeviceUtils } from '@ranran/utilCode'
+import { DeviceUtils } from '@android/utilCode'
 ```
 
 * getDeviceId 获取设备id>32为随机码[卸载APP后依旧不变]
@@ -51,7 +51,7 @@ import { DeviceUtils } from '@ranran/utilCode'
 #### 1.2 CharUtils的方法
 
 ``` typescript
-import { CharUtils } from '@ranran/utilCode'
+import { CharUtils } from '@android/utilCode'
 ```
 
 * isBlankChar 是否空白符 空白符包括空格、制表符、全角空格和不间断空格
@@ -63,7 +63,7 @@ import { CharUtils } from '@ranran/utilCode'
 后期会增加扩展方法，使用会更简单
 
 ``` typescript
-import { StringUtils } from '@ranran/utilCode'
+import { StringUtils } from '@android/utilCode'
 ```
 
 * isBlank 判断字符串是否为空白符(空白符包括空格、制表符、全角空格和不间断空格)true为空，否则false
@@ -77,7 +77,7 @@ import { StringUtils } from '@ranran/utilCode'
 后期会增加扩展方法，使用会更简单
 
 ``` typescript
-import { ObjectUtils } from '@ranran/utilCode'
+import { ObjectUtils } from '@android/utilCode'
 ```
 
 * isString 判断属性是否是string类型类型
@@ -92,7 +92,7 @@ import { ObjectUtils } from '@ranran/utilCode'
 基于 @ohos.security.asset 的封装。可以保证『重装/删除应用而不丢失数据』。
 
 ``` typescript
-import { AssetStore } from '@ranran/utilCode'
+import { AssetStore } from '@android/utilCode'
 ```
 
 * set 增
