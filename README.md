@@ -63,7 +63,7 @@ import { CharUtils } from '@android/utilCode'
 后期会增加扩展方法，使用会更简单
 
 ``` typescript
-import { StringUtils } from '@ranran/utilCode'
+import { StringUtils } from '@android/utilCode'
 ```
 
 * isBlank 判断字符串是否为空白符(空白符包括空格、制表符、全角空格和不间断空格)true为空，否则false
