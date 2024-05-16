@@ -1,11 +1,12 @@
 import { window } from '@kit.ArkUI'
 import { BusinessError } from '@ohos.base'
+
 /**
  * @Author: ZhongRui ༄༅哟嚯྅ᯤ⁶ᴳ
  * @Date: 2024/5/16 22:41
  * @Description: ui适配工具类
  **/
-export default  class UIAdapt {
+export class UIAdapt {
   private static instance: UIAdapt
   private static readonly UI_DESIGN_WIDTH = 375
   private static readonly UI_DESIGN_HEIGHT = 1373.5
@@ -35,11 +36,13 @@ export default  class UIAdapt {
   }
 
 
-  toPx(uiSize: number, adaptFoldingScreen: boolean = true, uiDesignWidth: number = UIAdapt.UI_DESIGN_WIDTH, aspectRatio?: number, scale?: number): string {
+  toPx(uiSize: number, adaptFoldingScreen: boolean = true, uiDesignWidth: number = UIAdapt.UI_DESIGN_WIDTH,
+    aspectRatio?: number, scale?: number): string {
     return this.toPxNumber(uiSize, adaptFoldingScreen, uiDesignWidth, aspectRatio, scale) + "px"
   }
 
-  toPxNumber(uiSize: number, adaptFoldingScreen: boolean = true, uiDesignWidth: number = UIAdapt.UI_DESIGN_WIDTH, aspectRatio?: number, scale?: number): number {
+  toPxNumber(uiSize: number, adaptFoldingScreen: boolean = true, uiDesignWidth: number = UIAdapt.UI_DESIGN_WIDTH,
+    aspectRatio?: number, scale?: number): number {
     this.checkWidth()
     if (this.windowWidth <= 0) {
       return vp2px(uiSize)
@@ -52,9 +55,10 @@ export default  class UIAdapt {
       }
       let widthHeightRatio = this.windowWidth / this.windowHeight
 
-      if (aspectRatio != null && aspectRatio != undefined && aspectRatio > 0 && scale != null && scale != undefined && scale > 0) {
+      if (aspectRatio != null && aspectRatio != undefined && aspectRatio > 0 && scale != null && scale != undefined &&
+        scale > 0) {
         if (widthHeightRatio >= aspectRatio) {
-          return (size/scale)
+          return (size / scale)
         }
         return size
       }
@@ -97,7 +101,7 @@ export default  class UIAdapt {
     this.windowHeight = height;
   }
 
-  getWindowWidth(): number  {
+  getWindowWidth(): number {
     this.checkWidth()
     if (this.windowWidth <= 0) {
       return 0
