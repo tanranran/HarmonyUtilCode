@@ -256,6 +256,17 @@
       "AssetStore#has#$0#res": "d10",
       "AssetStore#set#isPersistent": "e10"
     },
+    "utilcode/src/main/ets/CharUtils.ts": {
+      "CharUtils#isSpaceChar#codePoint": "f10",
+      "CharUtils#isSpaceChar#spaceCategories": "g10",
+      "CharUtils#isSpaceChar#character": "h10",
+      "CharUtils#isSpaceChar#category": "i10",
+      "CharUtils#isWhitespace#codePoint": "j10",
+      "CharUtils#isWhitespace#whitespaceRegex": "k10",
+      "CharUtils#isWhitespace#character": "l10",
+      "CharUtils#isEmoji#isNotEmoji": "m10",
+      "CharUtils#isAscii#ch": "n10"
+    },
     "utilcode/src/main/ets/DeviceUtils.ets": {
       "#util": "util"
     },
@@ -264,7 +275,11 @@
       "#List": "List",
       "#HashMap": "HashMap"
     },
-    "utilcode/src/main/ets/StringUtils.ts": {}
+    "utilcode/src/main/ets/StringUtils.ts": {
+      "StringUtils#replaceAll#s1": "o10",
+      "StringUtils#replaceAll#s2": "p10",
+      "StringUtils#isBlank#$1#i": "q10"
+    }
   },
   "PropertyCache": {
     "__assign": "i",

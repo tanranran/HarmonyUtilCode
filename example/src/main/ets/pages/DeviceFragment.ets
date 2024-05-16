@@ -1,6 +1,7 @@
-import { DeviceUtils } from '@ranran/utilcode/Index';
+import { DeviceUtils } from '@android/utilcode';
 import CommonItemTitle from '../bean/CommonItemTitle';
 import CommonConst from '../const/CommonConst';
+import { BaseFragmentComp } from '../components/BaseFragmentComp';
 
 /**
  * @author Tanranran
@@ -17,25 +18,20 @@ export struct DeviceFragment {
   }
 
   build() {
-    NavDestination() {
-      List({initialIndex: 0 }) {
-        ForEach(this.listData, (item: CommonItemTitle) => {
-          ListItem() {
-            Column() {
-              Text(item.title).fontWeight(FontWeight.Bold)
-              Text(item.content).margin({top:12})
-            }
-            .padding(12)
-            .alignItems(HorizontalAlign.Start)
-            .borderRadius(3)
-            .backgroundColor(Color.White).width('100%')
+    BaseFragmentComp({ title: "DeviceUtils Demo" }) {
+      ForEach(this.listData, (item: CommonItemTitle) => {
+        ListItem() {
+          Column() {
+            Text(item.title).fontWeight(FontWeight.Bold)
+            Text(item.content).margin({ top: 12 })
           }
-        }, (item: CommonItemTitle) => item.title)
-      }
-      .divider({ strokeWidth: '1px', color:$r('sys.color.ohos_id_divider_color') })
-      .height('100%')
-      .width("100%")
-      .listDirection(Axis.Vertical)
-    }.title('DeviceUtils Demo').backgroundColor('#F5F5F5')
+          .padding(12)
+          .alignItems(HorizontalAlign.Start)
+          .borderRadius(3)
+          .backgroundColor(Color.White)
+          .width('100%')
+        }
+      }, (item: CommonItemTitle) => item.title)
+    }
   }
 }

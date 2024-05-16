@@ -6,6 +6,6 @@
   "author": "tanranran",
   "license": "",
   "dependencies": {
-    "@ranran/utilcode": "file:../utilcode"
+    "@android/utilcode": "file:../utilcode"
   }
 }
