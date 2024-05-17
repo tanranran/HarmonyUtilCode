@@ -1,11 +1,15 @@
 import { common } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI'
-import {AppUtils} from './AppUtils';
+import { AppUtils } from './AppUtils';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { LogUtils } from './LogUtils';
 
 /**
  * @author Tanranran
  * @date 2024/5/15 22:25
  * @description
+ * //初始化通用工具类,建议再UIAbility onCreate 的时候初始化
+ *  Utils.init(this.context)
  */
 export class Utils {
   private constructor() {
@@ -42,7 +46,17 @@ export class Utils {
   public static setMainWindow(mainWindow?: window.Window) {
     try {
       Utils.mainWindow = mainWindow
-      if (mainWindow) {
+      if (!mainWindow) {
+        window.getLastWindow(getContext(), (err: BusinessError, data) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            LogUtils.error(Utils.constructor.name,'Failed to obtain the top window. Cause: ' + JSON.stringify(err))
+            return;
+          }
+          Utils.mainWindow = data;
+          Utils.sUiContext = data.getUIContext()
+        })
+      } else {
         Utils.sUiContext = mainWindow.getUIContext()
       }
     } catch (e) {
@@ -64,7 +78,7 @@ export class Utils {
    * @returns
    */
   public static getAbilityContext() {
-    return Utils.sAbilityContext  ?? getContext() as common.UIAbilityContext;
+    return Utils.sAbilityContext ?? getContext() as common.UIAbilityContext;
   }
 
   /**
@@ -80,6 +94,6 @@ export class Utils {
    * @returns
    */
   public static getUIContext() {
-    return Utils.sUiContext
+    return Utils.sUiContext ?? Utils.getMainWindow()?.getUIContext()
   }
 }
