@@ -10,6 +10,8 @@ export { StringUtils } from './src/main/ets/StringUtils'
 
 export { AssetStore } from './src/main/ets/AssetStore'
 
-export {ConvertUtils} from './src/main/ets/ConvertUtils'
+export { ConvertUtils } from './src/main/ets/ConvertUtils'
 
-export {UIAdapt} from './src/main/ets/UIAdapt'
+export { UIAdapt } from './src/main/ets/UIAdapt'
+
+export { ResourceUtils } from './src/main/ets/ResourceUtils'
