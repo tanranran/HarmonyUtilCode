@@ -42,8 +42,11 @@ export class StringUtils {
    * @param str 被检测的字符串
    * @return 是否为空
    */
-  static isEmpty(property?: CommonAllType): Boolean {
+  static isEmpty(property?: CommonAllType,isCheckUndefinedStr?:boolean): Boolean {
     if (ObjectUtils.isNull(property) || property == '') {
+      return true
+    }
+    if (isCheckUndefinedStr&&property=='undefined') {
       return true
     }
     return ObjectUtils.isEmpty(property)

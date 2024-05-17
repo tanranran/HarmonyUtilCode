@@ -19,11 +19,11 @@ export class DeviceUtils {
   static async getDeviceId() {
     let deviceId = DeviceUtils.deviceId
     //如果内存缓存为空，则从AssetStore中读取
-    if (StringUtils.isEmpty(deviceId)) {
+    if (StringUtils.isEmpty(deviceId, true)) {
       deviceId = `${(await AssetStore.get(DeviceUtils.deviceIdCacheKey)).data}`
     }
     //如果AssetStore中未读取到，则随机生成32位随机码，然后缓存到AssetStore中
-    if (StringUtils.isEmpty(deviceId)) {
+    if (StringUtils.isEmpty(deviceId, true)) {
       deviceId = util.generateRandomUUID(true).replace(new RegExp('-', "gm"), '')
       AssetStore.set(DeviceUtils.deviceIdCacheKey, deviceId)
     }
