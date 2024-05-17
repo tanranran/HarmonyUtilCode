@@ -9,7 +9,7 @@ import { Utils } from './Utils'
 export class ResourceUtils {
   /**
    * 资源名称对应的数值。Integer[app.integer.integer_test]对应的是原数值，float不带单位对应的是原数值[$r('app.float.float_test')]；带"vp","fp"单位时对应的是px值。
-   * @param resId
+   * @param resource
    * @returns 返回单位vp
    */
   static getNumber(resource: Resource): number {
