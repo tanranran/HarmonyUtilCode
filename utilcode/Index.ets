@@ -22,6 +22,8 @@ export { LogUtils } from './src/main/ets/LogUtils'
 
 export { JsonUtils } from './src/main/ets/JsonUtils'
 
+export { NetworkUtils, NetworkType } from './src/main/ets/NetworkUtils'
+
 export { Lifecycle } from './src/main/ets/lifecycle/Lifecycle'
 
 export { LifecycleEvent } from './src/main/ets/lifecycle/LifecycleEvent'
