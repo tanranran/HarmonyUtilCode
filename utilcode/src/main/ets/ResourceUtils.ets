@@ -14,7 +14,7 @@ export class ResourceUtils {
    */
   static getNumber(resource: Resource): number {
     try {
-      return Utils.getAbilityContext().resourceManager.getNumber(resource)
+      return px2vp(Utils.getAbilityContext().resourceManager.getNumber(resource))
     } catch (e) {
       console.error(e)
       return 0

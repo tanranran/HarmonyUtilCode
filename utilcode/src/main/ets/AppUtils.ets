@@ -1,4 +1,5 @@
 import { bundleManager } from '@kit.AbilityKit';
+import { JsonUtils } from './JsonUtils';
 
 /**
  * @author Tanranran
@@ -23,9 +24,10 @@ export class AppUtils {
     return AppUtils.getAppBundleInfo().appInfo.debug
   }
 
-  //   public static boolean isAppSystem() {
-  //     return isAppSystem(Utils.getApp().getPackageName());
-  //   }
+  static isAppSystem() {
+    return AppUtils.getAppBundleInfo().appInfo.systemApp
+  }
+
   //
   //   public static boolean isAppForeground() {
   //     return UtilsBridge.isAppForeground();
@@ -80,12 +82,28 @@ export class AppUtils {
     return AppUtils.getAppBundleInfo().versionCode
   }
 
-  //
-  // getAppMinSdkVersion()
-  //
-  // getAppTargetSdkVersion()
-  //
-  // getAppUid()
-  //
-  // getAppInfo()
+  /**
+   * 运行应用包所需要最低的SDK版本号。
+   * @returns 1000000
+   */
+  static getAppMinSdkVersion(): number {
+    return AppUtils.getAppBundleInfo().minCompatibleVersionCode
+  }
+
+  /**
+   * 运行应用包所需要最高SDK版本号。
+   * @returns 40100011
+   */
+  static getAppTargetSdkVersion(): number {
+    return AppUtils.getAppBundleInfo().targetVersion
+  }
+
+
+  static getAppUid(): number {
+    return AppUtils.getAppBundleInfo().appInfo.uid
+  }
+
+  static getAppInfo() {
+    return AppUtils.getAppBundleInfo().appInfo
+  }
 }

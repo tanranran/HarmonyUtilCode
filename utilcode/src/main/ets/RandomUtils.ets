@@ -7,6 +7,11 @@ import { LogUtils } from './LogUtils'
  * @description
  */
 export class RandomUtils {
+  /**
+   * 随机生成32位UUID xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx
+   * @param trimmedUuid 是否去除-
+   * @returns
+   */
   static randomUUID(trimmedUuid: boolean = true) {
     try {
       if (canIUse('SystemCapability.Utils.Lang')) {
