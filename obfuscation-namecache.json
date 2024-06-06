@@ -267,6 +267,15 @@
       "CharUtils#isEmoji#isNotEmoji": "m10",
       "CharUtils#isAscii#ch": "n10"
     },
+    "utilcode/src/main/ets/ConvertUtils.ets": {
+      "#display": "display",
+      "ConvertUtils#vp2px#vpVal": "o10",
+      "ConvertUtils#vp2px#$0#displayObject": "p10",
+      "ConvertUtils#vp2px#$0#screenDensityDPI": "q10",
+      "ConvertUtils#px2vp#vpVal": "r10",
+      "ConvertUtils#px2vp#$0#displayObject": "s10",
+      "ConvertUtils#px2vp#$0#screenDensityDPI": "t10"
+    },
     "utilcode/src/main/ets/DeviceUtils.ets": {
       "#util": "util"
     },
@@ -276,9 +285,30 @@
       "#HashMap": "HashMap"
     },
     "utilcode/src/main/ets/StringUtils.ts": {
-      "StringUtils#replaceAll#s1": "o10",
-      "StringUtils#replaceAll#s2": "p10",
-      "StringUtils#isBlank#$1#i": "q10"
+      "StringUtils#replaceAll#s1": "u10",
+      "StringUtils#replaceAll#s2": "v10",
+      "StringUtils#isEmpty#isCheckUndefinedStr": "w10",
+      "StringUtils#isBlank#$1#i": "x10"
+    },
+    "utilcode/src/main/ets/UIAdapt.ets": {
+      "#window": "window",
+      "UIAdapt#init#__function": "y10",
+      "UIAdapt#toPxForHeight#uiSize": "z10",
+      "UIAdapt#toPxForHeight#uiDesignHeight": "a11",
+      "UIAdapt#toPxNumber#uiSize": "b11",
+      "UIAdapt#toPxNumber#adaptFoldingScreen": "c11",
+      "UIAdapt#toPxNumber#uiDesignWidth": "d11",
+      "UIAdapt#toPxNumber#$1#widthHeightRatio": "e11",
+      "UIAdapt#toPx#uiSize": "f11",
+      "UIAdapt#toPx#adaptFoldingScreen": "g11",
+      "UIAdapt#toPx#uiDesignWidth": "h11",
+      "UIAdapt#checkHeight#_a": "i11",
+      "UIAdapt#checkWidth#_a": "j11"
+    },
+    "utilcode/src/main/ets/Utils.ets": {
+      "Utils#getAbilityContext#_a": "k11",
+      "Utils#setMainWindow#mainWindow": "l11",
+      "Utils#init#entryContext": "m11"
     }
   },
   "PropertyCache": {

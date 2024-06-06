@@ -6,9 +6,9 @@
         "type": "HarmonyOS",
         "material": {
           "certpath": "./configs/signing/default_HarmonyUtilCode_kfbyGhz8kRKI6ULN1pEMEPR6bNl7dLAXiDpcU7r4qcM=.cer",
-          "storePassword": "0000001AB7D05FF6CBF3D391AE0910FC17BF9CE53FA45FBC73CAF7F4A9FD8CD3E646862395BD31885AEF",
+          "storePassword": "0000001B2C60E88F7E678187506DBFF6280EBF4C0FE45C6803B45C6DE6049204C0D1F7ADB870D841A0A6ED",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001AE5B63C61613C451D0C5B89A6ECBC2B5BAD96B69FE9C878EFEE1D353D4ED15147838FC0A72B13",
+          "keyPassword": "0000001BB88186BAD4895E4C76142986567609A5D4225E8B8A8A0FDA0EF95E5CADB2680A59649D01DCD337",
           "profile": "./configs/signing/default_HarmonyUtilCode_kfbyGhz8kRKI6ULN1pEMEPR6bNl7dLAXiDpcU7r4qcM=.p7b",
           "signAlg": "SHA256withECDSA",
           "storeFile": "./configs/signing/default_HarmonyUtilCode_kfbyGhz8kRKI6ULN1pEMEPR6bNl7dLAXiDpcU7r4qcM=.p12"
@@ -19,7 +19,6 @@
       {
         "name": "default",
         "signingConfig": "default",
-        "compileSdkVersion": "4.1.0(11)",
         "compatibleSdkVersion": "4.1.0(11)",
         "runtimeOS": "HarmonyOS",
       }
