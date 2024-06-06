@@ -99,3 +99,48 @@ import { AssetStore } from '@android/utilCode'
 * remove 删
 * update 改
 * get 查
+
+#### 1.6 ResourceUtils
+
+资源相关工具类
+
+``` typescript
+import { ResourceUtils } from '@android/utilCode'
+```
+
+* getNumber 返回Resource对应的数值，单位vp
+
+#### 1.7 RandomUtils
+
+随机工具类
+
+``` typescript
+import { RandomUtils } from '@android/utilCode'
+```
+
+* randomUUID 随机生成32位uuid f4fed14a-7fab-4219-9440-80aec4735700
+
+#### 1.8 Lifecycle
+
+自定义组件生命周期绑定装饰器，可通过以下方式自动绑定自定义组件的生命周期，使用方法和Android中的Lifecycle类似
+无需关注lifecycle的释放，自定义组件aboutToDisappear时，lifecycle会自动释放
+
+使用场景：比如页面关闭后，当前页面上的未请求完毕网络请求自动取消
+
+注：目前仅支持aboutToAppear【Component】、onPageShow【Entry】、onPageHide【Entry】、aboutToDisappear【Component】，navigation
+比较特殊，目前暂未找到合适的时机
+
+``` typescript
+import {Lifecycle, LifecycleEvent } from '@android/utilcode';
+@Component
+@Preview
+export struct TestFragment {
+    @LifecycleEvent lifecycle: Lifecycle = new Lifecycle()
+    aboutToAppear(): void {
+      this.lifecycle.addObserver((state: LifecycleState) => {
+        //此处即可
+        console.log("状态" + state)
+      })
+    }
+}
+```

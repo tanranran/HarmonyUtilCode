@@ -16,6 +16,12 @@ export { UIAdapt } from './src/main/ets/UIAdapt'
 
 export { ResourceUtils } from './src/main/ets/ResourceUtils'
 
+export { RandomUtils } from './src/main/ets/RandomUtils'
+
 export { LogUtils } from './src/main/ets/LogUtils'
 
 export { JsonUtils } from './src/main/ets/JsonUtils'
+
+export { Lifecycle } from './src/main/ets/lifecycle/Lifecycle'
+
+export { LifecycleEvent } from './src/main/ets/lifecycle/LifecycleEvent'

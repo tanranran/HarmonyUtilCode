@@ -1,9 +1,10 @@
 {
   "name": "@android/utilcode",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "一款高效的OpenHarmony/HarmonyOS工具包从Blankj/AndroidUtilCode 移植而来.封装了常用工具类,提供一系列快捷操作方法。",
   "keywords": [
     "工具类",
+    "生命周期",
     "JSON",
     "Blankj",
     "AndroidUtilCode"
@@ -16,5 +17,7 @@
   "dependencies": {
     "@ohos/crypto-js": "^2.0.3",
     "class-transformer": "^0.5.1"
-  }
+  },
+  "devDependencies": {},
+  "dynamicDependencies": {}
 }
