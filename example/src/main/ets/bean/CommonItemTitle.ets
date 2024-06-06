@@ -4,11 +4,13 @@
  * @description
  */
 export default class CommonItemTitle {
+  pageName?: string
   title: string
   content?: string
 
-  constructor(title: string, content?: string) {
+  constructor(title: string, content: string, pageName?: string) {
     this.title = title
     this.content = content
+    this.pageName = pageName
   }
 }
