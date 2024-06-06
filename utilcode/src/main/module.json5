@@ -10,6 +10,9 @@
     "requestPermissions": [
       {
         "name": "ohos.permission.STORE_PERSISTENT_DATA"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_INFO"
       }
     ]
   }
