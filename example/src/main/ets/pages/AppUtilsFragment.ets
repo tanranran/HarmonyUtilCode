@@ -19,6 +19,11 @@ export struct AppUtilsFragment {
   @LifecycleEvent lifecycle: Lifecycle = new Lifecycle()
 
   async aboutToAppear(): Promise<void> {
+    this.listData.push(new CommonItemTitle('isAppDebug', AppUtils.isAppDebug() ? 'true' : 'false'))
+    this.listData.push(new CommonItemTitle('packageName', AppUtils.getPackageName()))
+    this.listData.push(new CommonItemTitle('AppName', AppUtils.getAppName()))
+    this.listData.push(new CommonItemTitle('AppVersionName', AppUtils.getAppVersionName()))
+    this.listData.push(new CommonItemTitle('AppVersionCode', `${AppUtils.getAppVersionCode()}`))
     this.lifecycle.addObserver((state: LifecycleState) => {
       console.log("状态" + state)
     })
