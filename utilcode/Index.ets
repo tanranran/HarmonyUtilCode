@@ -27,3 +27,7 @@ export { NetworkUtils, NetworkType } from './src/main/ets/NetworkUtils'
 export { Lifecycle } from './src/main/ets/lifecycle/Lifecycle'
 
 export { LifecycleEvent } from './src/main/ets/lifecycle/LifecycleEvent'
+
+export { AESUtils } from './src/main/ets/AESUtils'
+
+export { DESUtils } from './src/main/ets/DESUtils'
