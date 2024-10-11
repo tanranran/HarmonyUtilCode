@@ -31,7 +31,7 @@ ohpm install @android/utilCode
 ### 1.在项目中引入插件
 
 ```
-import { DeviceUtils } from '@android/utilCode'
+import { DeviceUtils } from '@android_x/utilCode'
 ```
 
 类按需引入,项目需要使用那个就引入
@@ -39,7 +39,7 @@ import { DeviceUtils } from '@android/utilCode'
 #### 1.1 DeviceUtils的方法
 
 ``` typescript
-import { DeviceUtils } from '@android/utilCode'
+import { DeviceUtils } from '@android_x/utilCode'
 ```
 
 * getDeviceId 获取设备id>32为随机码[卸载APP后依旧不变]
@@ -51,7 +51,7 @@ import { DeviceUtils } from '@android/utilCode'
 #### 1.2 CharUtils的方法
 
 ``` typescript
-import { CharUtils } from '@android/utilCode'
+import { CharUtils } from '@android_x/utilCode'
 ```
 
 * isBlankChar 是否空白符 空白符包括空格、制表符、全角空格和不间断空格
@@ -63,7 +63,7 @@ import { CharUtils } from '@android/utilCode'
 后期会增加扩展方法，使用会更简单
 
 ``` typescript
-import { StringUtils } from '@android/utilCode'
+import { StringUtils } from '@android_x/utilCode'
 ```
 
 * isBlank 判断字符串是否为空白符(空白符包括空格、制表符、全角空格和不间断空格)true为空，否则false
@@ -77,7 +77,7 @@ import { StringUtils } from '@android/utilCode'
 后期会增加扩展方法，使用会更简单
 
 ``` typescript
-import { ObjectUtils } from '@android/utilCode'
+import { ObjectUtils } from '@android_x/utilCode'
 ```
 
 * isString 判断属性是否是string类型类型
@@ -92,7 +92,7 @@ import { ObjectUtils } from '@android/utilCode'
 基于 @ohos.security.asset 的封装。可以保证『重装/删除应用而不丢失数据』。
 
 ``` typescript
-import { AssetStore } from '@android/utilCode'
+import { AssetStore } from '@android_x/utilCode'
 ```
 
 * set 增
@@ -105,7 +105,7 @@ import { AssetStore } from '@android/utilCode'
 资源相关工具类
 
 ``` typescript
-import { ResourceUtils } from '@android/utilCode'
+import { ResourceUtils } from '@android_x/utilCode'
 ```
 
 * getNumber 返回Resource对应的数值，单位vp
@@ -115,7 +115,7 @@ import { ResourceUtils } from '@android/utilCode'
 随机工具类
 
 ``` typescript
-import { RandomUtils } from '@android/utilCode'
+import { RandomUtils } from '@android_x/utilCode'
 ```
 
 * randomUUID 随机生成32位uuid f4fed14a-7fab-4219-9440-80aec4735700
@@ -131,7 +131,7 @@ import { RandomUtils } from '@android/utilCode'
 比较特殊，目前暂未找到合适的时机
 
 ``` typescript
-import {Lifecycle, LifecycleEvent } from '@android/utilcode';
+import {Lifecycle, LifecycleEvent } from '@android_x/utilcode';
 @Component
 @Preview
 export struct TestFragment {

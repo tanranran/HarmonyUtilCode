@@ -1,7 +1,7 @@
 {
   "app": {
     "bundleName": "com.harmonyos.utilcode",
-    "patchVersionCode": 2000110,
+    "patchVersionCode": 2000294,
     "versionCode": 1000000
   },
   "module": {

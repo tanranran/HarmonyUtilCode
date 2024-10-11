@@ -11,6 +11,9 @@
     {
       "name": "EntryAbility_label",
       "value": "$string:app_name"
+    },{
+      "name": "reason_app_read_pasteboard",
+      "value": "为了获取剪切板数据"
     }
   ]
 }

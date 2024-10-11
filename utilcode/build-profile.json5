@@ -1,13 +1,17 @@
 {
   "apiType": "stageMode",
-  "buildOption": {},
+  "buildOption": {
+    "arkOptions": {
+      "byteCodeHar": false
+    }
+  },
   "buildOptionSet": [
     {
       "name": "release",
       "arkOptions": {
         "obfuscation": {
           "ruleOptions": {
-            "enable": true,
+            "enable": false,
             "files": [
               "./obfuscation-rules.txt"
             ]

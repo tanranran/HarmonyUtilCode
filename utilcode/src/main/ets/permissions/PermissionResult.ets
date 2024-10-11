@@ -14,4 +14,6 @@ export default class PermissionResult {
   allGranted: boolean = false
   //error 异常
   error?: BusinessError
+  //二次向用户申请授权
+  requestPermissionOnSetting?: () => Promise<PermissionResult>
 }

@@ -1,10 +1,15 @@
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
+import { StateConst } from '../const/StateConst';
+import { MMKV } from '@tencent/mmkv';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    let appCtx = this.context.getApplicationContext();
+    let mmkvRootDir = MMKV.initialize(appCtx);
+    console.info('mmkv rootDir: ', mmkvRootDir);
   }
 
   onDestroy(): void {
@@ -36,10 +41,12 @@ export default class EntryAbility extends UIAbility {
   onForeground(): void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    AppStorage.setOrCreate(StateConst.IS_ON_FOREGROUND, true)
   }
 
   onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+    AppStorage.setOrCreate(StateConst.IS_ON_FOREGROUND, false)
   }
 }

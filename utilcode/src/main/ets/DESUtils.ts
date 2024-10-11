@@ -24,9 +24,18 @@ export class DESUtils {
   static decode(key, data): string {
     try {
       var keyHex = CryptoJS.enc.Utf8.parse(key);
-      var decrypted = CryptoJS.DES.decrypt({
-        ciphertext: CryptoJS.enc.Base64.parse(data)
-      }, keyHex, {
+      let ciphertext: CryptoJS.lib.CipherParams = {
+        ciphertext: CryptoJS.enc.Base64.parse(data),
+        key: undefined,
+        iv: undefined,
+        salt: undefined,
+        algorithm: undefined,
+        mode: undefined,
+        padding: undefined,
+        blockSize: 0,
+        formatter: undefined
+      }
+      var decrypted = CryptoJS.DES.decrypt(ciphertext, keyHex, {
         mode: CryptoJS.mode.ECB,
         padding: CryptoJS.pad.Pkcs7
       });

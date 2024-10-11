@@ -1,12 +1,12 @@
 import { ArrayList } from '@kit.ArkTS';
 
+
 /**
- * 生命周期包装类
+ * 生命周期状态
  * @author Tanranran
  * @date 2024/6/5 23:45
  * @description
  */
-
 export enum LifecycleState {
   ToAppear,
   PageShow,
@@ -14,6 +14,12 @@ export enum LifecycleState {
   ToDisappear,
 }
 
+/**
+ * 生命周期包装类
+ * @author Tanranran
+ * @date 2024/6/5 23:45
+ * @description
+ */
 export class Lifecycle {
   private mObserverList: ArrayList<(state: LifecycleState) => void> | null = new ArrayList();
 

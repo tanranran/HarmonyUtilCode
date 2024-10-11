@@ -1,0 +1,68 @@
+{
+  "routerMap": [
+    {
+      "name": "AppUtilsFragment",
+      "pageSourceFile": "src/main/ets/pages/AppUtilsFragment.ets",
+      "buildFunction": "PageBuilder",
+      "data": {
+        "description": "this is AppUtilsFragment"
+      }
+    },
+    {
+      "name": "DeviceFragment",
+      "pageSourceFile": "src/main/ets/pages/DeviceFragment.ets",
+      "buildFunction": "PageBuilder",
+      "data": {
+        "description": "this is DeviceFragment"
+      }
+    },
+    {
+      "name": "ClipboardFragment",
+      "pageSourceFile": "src/main/ets/pages/ClipboardFragment.ets",
+      "buildFunction": "PageBuilder",
+      "data": {
+        "description": "this is ClipboardFragment"
+      }
+    },
+    {
+      "name": "EventBusFragment",
+      "pageSourceFile": "src/main/ets/pages/LiveDataBusFragment.ets",
+      "buildFunction": "PageBuilder",
+      "data": {
+        "description": "this is EventBusFragment"
+      }
+    },
+    {
+      "name": "ImageFragment",
+      "pageSourceFile": "src/main/ets/pages/ImageFragment.ets",
+      "buildFunction": "PageBuilder",
+      "data": {
+        "description": "this is ImageFragment"
+      }
+    },
+    {
+      "name": "PermissionFragment",
+      "pageSourceFile": "src/main/ets/pages/PermissionFragment.ets",
+      "buildFunction": "PageBuilder",
+      "data": {
+        "description": "this is PermissionFragment"
+      }
+    },
+    {
+      "name": "DialogFragment",
+      "pageSourceFile": "src/main/ets/pages/DialogFragment.ets",
+      "buildFunction": "PageBuilder",
+      "data": {
+        "description": "this is DialogFragment"
+      }
+    },
+    {
+      "name": "ListSortFragment",
+      "pageSourceFile": "src/main/ets/pages/ListSortFragment.ets",
+      "buildFunction": "PageBuilder",
+      "data": {
+        "description": "this is ListSortFragment"
+      }
+    }
+  ]
+}

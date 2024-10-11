@@ -1,9 +1,12 @@
-import { DeviceUtils, Lifecycle, LifecycleEvent } from '@android/utilcode';
+import { DeviceUtils, Lifecycle, LifecycleEvent, LifecycleState, LogUtils } from '@android_x/utilcode';
 import CommonItemTitle from '../bean/CommonItemTitle';
 import CommonConst from '../const/CommonConst';
-import { AppUtils } from '@android/utilcode/src/main/ets/AppUtils';
+import { AppUtils } from '@android_x/utilcode/src/main/ets/AppUtils';
 import { BaseFragmentComp } from '../components/BaseFragmentComp';
-import { LifecycleState } from '@android/utilcode/src/main/ets/lifecycle/Lifecycle';
+import { SourceType } from '@kit.InputKit';
+import { taskpool } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { LiveDataBus } from '@android_x/utilcode/src/main/ets/LiveDataBus';
 
 /**
  * @author Tanranran
@@ -32,4 +35,14 @@ export struct AppUtilsFragment {
   build() {
     BaseFragmentComp({ title: this.title, listData: this.listData })
   }
+
+  aboutToDisappear(): void {
+    LiveDataBus.removeObserve("test")
+  }
+}
+
+
+@Builder
+export function PageBuilder() {
+  AppUtilsFragment()
 }

@@ -3,6 +3,14 @@
     {
       "name": "app_name",
       "value": "HarmonyUtilCode"
+    },
+    {
+      "name": "descriptionCamera",
+      "value": "为了拍摄照片和视频"
+    },
+    {
+      "name": "descriptionLocation",
+      "value": "为了申请定位权限"
     }
   ]
 }

@@ -27,7 +27,6 @@ export function LifecycleEvent(target: any, propertyKey: string | any) {
 
     if (target.onPageShow) {
       let oldFunction = target.onPageShow
-
       function pageShow() {
         target[propertyKey].onPageShow()
         oldFunction.call(this)

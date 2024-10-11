@@ -12,6 +12,7 @@
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
+    "routerMap": "$profile:route_map",
     "abilities": [
       {
         "name": "EntryAbility",
@@ -19,9 +20,10 @@
         "description": "$string:EntryAbility_desc",
         "icon": "$media:layered_image",
         "label": "$string:EntryAbility_label",
-        "startWindowIcon": "$media:icon_startwindow",
+        "startWindowIcon": "$media:foreground",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
+        "orientation": "follow_desktop",
         "skills": [
           {
             "entities": [
@@ -32,6 +34,64 @@
             ]
           }
         ]
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.STORE_PERSISTENT_DATA"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_INFO"
+      },
+      {
+        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
+        "reason": "$string:app_name",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        "name" : "ohos.permission.CAMERA",
+        "reason": "$string:descriptionCamera",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when":"always"
+        }
+      },
+      {
+        "name" : "ohos.permission.MICROPHONE",
+        "reason": "$string:descriptionCamera",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when":"always"
+        }
+      },
+      {
+        "name" : "ohos.permission.LOCATION",
+        "reason": "$string:descriptionLocation",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when":"always"
+        }
+      },
+      {
+        "name" : "ohos.permission.APPROXIMATELY_LOCATION",
+        "reason": "$string:descriptionLocation",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when":"always"
+        }
       }
     ]
   }

@@ -1,9 +1,9 @@
-import { DeviceUtils, JsonUtils } from '@android/utilcode';
+import { DeviceUtils, JsonUtils } from '@android_x/utilcode';
 import CommonItemTitle from '../bean/CommonItemTitle';
 import CommonConst from '../const/CommonConst';
 import { BaseFragmentComp } from '../components/BaseFragmentComp';
 import wifiManager from '@ohos.wifiManager';
-
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 /**
  * @author Tanranran
  * @date 2024/5/13 22:25
@@ -17,6 +17,13 @@ export struct DeviceFragment {
   msgHistory: string = ""
 
   async aboutToAppear(): Promise<void> {
+    try {
+      let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+      let deviceId: string = dmInstance.getLocalDeviceId();
+      console.log('local device id: ' + JSON.stringify(deviceId));
+    } catch (e) {
+      console.error(e)
+    }
     this.listData.push(new CommonItemTitle('设备ID-getDeviceId', await DeviceUtils.getDeviceId()))
     this.listData.push(new CommonItemTitle('设备AAID-getAAID', await DeviceUtils.getAAID()))
     this.listData.push(new CommonItemTitle('设备类型-getDeviceType', `${DeviceUtils.getDeviceType()}`))
@@ -74,4 +81,8 @@ export struct DeviceFragment {
   build() {
     BaseFragmentComp({ title: this.title, listData: this.listData })
   }
+}
+@Builder
+export function PageBuilder() {
+  DeviceFragment()
 }

@@ -74,4 +74,57 @@ export class ObjectUtils {
   static deepCopy<T>(obj: object): T {
     return instanceToInstance(obj) as T
   }
+
+  /**
+   * 设置Object 中指定属性的值
+   * @param obj
+   * @param key
+   * @param defaultValue
+   * @returns
+   */
+  static setValue(obj: object, key: string, value: CommonAllType) {
+    try {
+      if (obj) {
+        obj[key] = value;
+      }
+    } catch (e) {
+      console.error(`${ObjectUtils.name}_setValue`, e)
+    }
+  }
+
+  /**
+   * 获取Object 中指定属性的值
+   * @param obj
+   * @param key
+   * @param defaultValue
+   * @returns
+   */
+  static getValue<T>(obj: object | undefined | null, key: string, defaultValue: T): T {
+    try {
+      const value = obj[key];
+      if (value === undefined || value === null) {
+        return defaultValue;
+      }
+      return value;
+    } catch (e) {
+      console.error(`${ObjectUtils.name}_getValue`, e)
+    }
+  }
+
+  /**
+   * obj转class ，解决obj as class 后丢失方法的问题
+   * 例子：ObjectUtils.objToClass<SendCommentParam>(SendCommentParam,new Object())
+   * @param clazz
+   * @param obj
+   * @returns
+   */
+  static objToClass<T>(clazz: new (...args: any[]) => T, obj: any): T {
+    const instance = new clazz();
+    Object.assign(instance, obj);
+    return instance;
+  }
+
+  static values<T>(o: { [s: string]: T } | ArrayLike<T>): T[] {
+    return Object.values(o)
+  }
 }

@@ -6,6 +6,7 @@
 import { CharUtils } from './CharUtils';
 import { CommonAllType } from './const/CommonConst'
 import { ObjectUtils } from './ObjectUtils'
+import { buffer, util } from '@kit.ArkTS';
 
 export class StringUtils {
   /**
@@ -37,6 +38,10 @@ export class StringUtils {
     return false == StringUtils.isBlank(str);
   }
 
+  static startsWith(string: string = '', target: string, position: number = 0): boolean {
+    return string.startsWith(target, position);
+  }
+
   /**
    * 判断字符串是否为空
    * @param str 被检测的字符串
@@ -50,6 +55,15 @@ export class StringUtils {
       return true
     }
     return ObjectUtils.isEmpty(property)
+  }
+
+  /**
+   * 判断字符串是否为非空。true为非空空，否则false
+   * @param str
+   * @returns
+   */
+  static isNotEmpty(str: string | undefined | null) {
+    return false == StringUtils.isEmpty(str);
   }
 
   /**
@@ -74,5 +88,16 @@ export class StringUtils {
    */
   static replaceAll(source: string, s1, s2) {
     return source.replace(new RegExp(s1, "gm"), s2);
+  }
+
+  /**
+   * Uint8Array转字符串
+   * @param src Uint8Array
+   * @returns 字符串
+   */
+  static unit8ArrayToStr(src: Uint8Array, encoding: buffer.BufferEncoding = 'utf-8'): string {
+    let textDecoder = util.TextDecoder.create(encoding, { ignoreBOM: true })
+    let result = textDecoder.decodeWithStream(src, { stream: true });
+    return result;
   }
 }

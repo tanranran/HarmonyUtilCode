@@ -16,6 +16,18 @@ export class DeviceUtils {
   private static deviceId = ""
 
   /**
+   * 判断字符串是否为空
+   * @param property 被检测的字符串
+   */
+  static isEmpty(property?: string | null): Boolean {
+    if (property == '' || property == null || property == undefined || property == 'undefined' ||
+      property.length == 0) {
+      return true
+    }
+    return false
+  }
+
+  /**
    * 获取设备id>32为随机码[卸载APP后依旧不变]
    * @param isMD5
    * @returns
@@ -23,11 +35,11 @@ export class DeviceUtils {
   static async getDeviceId() {
     let deviceId = DeviceUtils.deviceId
     //如果内存缓存为空，则从AssetStore中读取
-    if (StringUtils.isEmpty(deviceId, true)) {
+    if (DeviceUtils.isEmpty(deviceId)) {
       deviceId = `${(await AssetStore.get(DeviceUtils.deviceIdCacheKey)).data}`
     }
     //如果AssetStore中未读取到，则随机生成32位随机码，然后缓存到AssetStore中
-    if (StringUtils.isEmpty(deviceId, true)) {
+    if (DeviceUtils.isEmpty(deviceId)) {
       deviceId = util.generateRandomUUID(true).replace(new RegExp('-', "gm"), '')
       AssetStore.set(DeviceUtils.deviceIdCacheKey, deviceId)
     }
@@ -35,7 +47,7 @@ export class DeviceUtils {
     return deviceId
   }
 
-  static async getAAID(){
+  static async getAAID() {
     try {
       return await AAID.getAAID();
     } catch (e) {

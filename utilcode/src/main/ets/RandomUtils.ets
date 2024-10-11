@@ -23,15 +23,28 @@ export class RandomUtils {
     } catch (e) {
       LogUtils.error(RandomUtils.name, e)
     }
-    return RandomUtils.generateUUID()
+    return RandomUtils.generateUUID(trimmedUuid)
   }
 
-  private static generateUUID(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+  private static generateUUID(trimmedUuid: boolean = true): string {
+    let randomStr = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
       const r = (Math.random() * 16) | 0;
       const v = c === 'x' ? r : (r & 0x3) | 0x8;
       return v.toString(16);
     });
+    if(trimmedUuid){
+      return randomStr.replace(new RegExp('-', "gm"), '')
+    }
+    return randomStr
+  }
+
+  /**
+   * 生成十六进制的随机颜色 #ffffff 格式
+   * @returns
+   */
+  static generateRandomColor(): string {
+    const color = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0');
+    return color;
   }
 }
 

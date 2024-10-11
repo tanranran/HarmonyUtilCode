@@ -5,6 +5,8 @@
  * @description
  */
 import { Utils } from './Utils'
+import { BusinessError } from '@kit.BasicServicesKit'
+import { LogUtils } from './LogUtils'
 
 export class ResourceUtils {
   /**
@@ -19,5 +21,26 @@ export class ResourceUtils {
       console.error(e)
       return 0
     }
+  }
+
+  /**
+   * 获取raw文件的字节流
+   * @param path
+   * @returns
+   */
+  static getRawFileContent(path: string): Promise<Uint8Array | null> {
+    return new Promise<Uint8Array | null>((resolve) => {
+      Utils.getAbilityContext()
+        .resourceManager
+        .getRawFileContent(path)
+        .then(res => {
+          resolve(res)
+        })
+        .catch((err: BusinessError) => {
+          resolve(null)
+          LogUtils.error(ResourceUtils.name,
+            `Failed to get RawFileContent with error message: ${err.message}, error code: ${err.code}`);
+        });
+    })
   }
 }

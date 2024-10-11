@@ -62,7 +62,8 @@ export default class PermissionsHelper {
     // 获取应用程序的accessTokenID
     let tokenID: number = 0;
     try {
-      let bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+      let bundleInfo: bundleManager.BundleInfo =
+        await bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
       let appInfo: bundleManager.ApplicationInfo = bundleInfo.appInfo;
       tokenID = appInfo.accessTokenId;
     } catch (err) {
@@ -84,7 +85,25 @@ export default class PermissionsHelper {
    * @param context
    */
   async requestPermissions(permissions: Permissions[]): Promise<PermissionResult> {
+    // 向用户申请授权
+    let context = getContext() as common.UIAbilityContext;
+    let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
     let permissionResult = new PermissionResult()
+    //二次向用户申请授权
+    permissionResult.requestPermissionOnSetting = () => {
+      return new Promise<PermissionResult>((resolve) => {
+        let permissionSettingResult = new PermissionResult()
+        atManager.requestPermissionOnSetting(context, permissions)
+          .then((authResults: Array<abilityAccessCtrl.GrantStatus>) => {
+            resolve(this.handleGrantStatus(permissionSettingResult, permissions, authResults))
+          })
+          .catch((err: BusinessError) => {
+            permissionSettingResult.error = err
+            console.error(`Failed to requestPermissionOnSetting. Code is ${err.code}, message is ${err.message}`);
+            resolve(permissionSettingResult)
+          });
+      })
+    }
     return new Promise<PermissionResult>(async (resolve) => {
       if (await PermissionsHelper.getInstance().checkPermission(...permissions)) {
         permissionResult.grantedPermissions = permissions
@@ -92,26 +111,9 @@ export default class PermissionsHelper {
         resolve(permissionResult)
         return
       }
-      // 向用户申请授权
-      let context = getContext() as common.UIAbilityContext;
-      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       // requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗
       atManager.requestPermissionsFromUser(context, permissions).then((data) => {
-        let dataPermissions = data.permissions
-        let grantStatus: Array<number> = data.authResults;
-        let length: number = grantStatus.length;
-        for (let i = 0; i < length; i++) {
-          let permission = dataPermissions[i]
-          if (grantStatus[i] === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED) {
-            // 用户授权，可以继续访问目标操作
-            permissionResult.grantedPermissions.push(permission)
-          } else {
-            // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
-            permissionResult.deniedPermissions.push(permission)
-          }
-        }
-        permissionResult.allGranted = permissionResult.grantedPermissions.length == dataPermissions.length
-        resolve(permissionResult)
+        resolve(this.handleGrantStatus(permissionResult, data.permissions, data.authResults))
         // 授权成功
       }).catch((err: BusinessError) => {
         permissionResult.error = err
@@ -119,5 +121,21 @@ export default class PermissionsHelper {
         resolve(permissionResult)
       })
     })
+  }
+
+  handleGrantStatus(permissionResult: PermissionResult, permissions: Array<string>, grantStatus: Array<number>) {
+    let length: number = grantStatus.length;
+    for (let i = 0; i < length; i++) {
+      let permission = permissions[i]
+      if (grantStatus[i] === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED) {
+        // 用户授权，可以继续访问目标操作
+        permissionResult.grantedPermissions.push(permission)
+      } else {
+        // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
+        permissionResult.deniedPermissions.push(permission)
+      }
+    }
+    permissionResult.allGranted = permissionResult.grantedPermissions.length == permissions.length
+    return permissionResult
   }
 }

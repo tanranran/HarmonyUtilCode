@@ -5,13 +5,13 @@
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "certpath": "./configs/signing/default_HarmonyUtilCode_kfbyGhz8kRKI6ULN1pEMEPR6bNl7dLAXiDpcU7r4qcM=.cer",
-          "storePassword": "0000001B2C60E88F7E678187506DBFF6280EBF4C0FE45C6803B45C6DE6049204C0D1F7ADB870D841A0A6ED",
+          "certpath": "/Users/smzdm/.ohos/config/default_HarmonyUtilCode_kfbyGhz8kRKI6ULN1pEMEPR6bNl7dLAXiDpcU7r4qcM=.cer",
+          "storePassword": "0000001AFAE85E5F5717D138A06D8815F09945CC61B5A5DC8B303C29B40FE52C33C19D37F69472132D2B",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001BB88186BAD4895E4C76142986567609A5D4225E8B8A8A0FDA0EF95E5CADB2680A59649D01DCD337",
-          "profile": "./configs/signing/default_HarmonyUtilCode_kfbyGhz8kRKI6ULN1pEMEPR6bNl7dLAXiDpcU7r4qcM=.p7b",
+          "keyPassword": "0000001A26B6AF9447FF0A1DB8667DF7A7F99A3FF6AF49A560D5E6E186A4A160CC9D62AF56EA2461D3A3",
+          "profile": "/Users/smzdm/.ohos/config/default_HarmonyUtilCode_kfbyGhz8kRKI6ULN1pEMEPR6bNl7dLAXiDpcU7r4qcM=.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "./configs/signing/default_HarmonyUtilCode_kfbyGhz8kRKI6ULN1pEMEPR6bNl7dLAXiDpcU7r4qcM=.p12"
+          "storeFile": "/Users/smzdm/.ohos/config/default_HarmonyUtilCode_kfbyGhz8kRKI6ULN1pEMEPR6bNl7dLAXiDpcU7r4qcM=.p12"
         }
       }
     ],
@@ -19,8 +19,14 @@
       {
         "name": "default",
         "signingConfig": "default",
-        "compatibleSdkVersion": "4.1.0(11)",
+        "compileSdkVersion": "5.0.0(12)",
+        "compatibleSdkVersion": "5.0.0(12)",
         "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "useNormalizedOHMUrl": true
+          }
+        }
       }
     ],
     "buildModeSet": [
