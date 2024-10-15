@@ -8,6 +8,7 @@ import { plainToInstance, ClassConstructor, instanceToPlain, Transform } from "c
 import { CommonAllType } from './const/CommonConst'
 import { ObjectUtils } from './ObjectUtils'
 import { StringUtils } from './StringUtils'
+import { JSON } from '@kit.ArkTS'
 
 export class JsonUtils {
   /**
@@ -39,8 +40,22 @@ export class JsonUtils {
     try {
       if (ObjectUtils.isNull(data)) {
         return ""
-      } else if (Array.isArray(data) && data.length == 0) {
-        return "[]"
+      } else if (data instanceof Map) {
+        let jsonObject: Record<string, Object> = {};
+        data.forEach((val: string, key: Object) => {
+          if (key !== undefined && val !== undefined) {
+            jsonObject[key as string] = JsonUtils.bean2Json(val);
+          }
+        });
+        return JSON.stringify(jsonObject);
+      } else if (Array.isArray(data)) {
+        return JSON.stringify(instanceToPlain(data))
+      } else if (ObjectUtils.isString(data)) {
+        return StringUtils.toString(data, '')
+      } else if (typeof data === 'number') {
+        return new String(data).toString();
+      } else if (typeof data === 'boolean') {
+        return new String(data).toString();
       }
       return JSON.stringify(instanceToPlain(data))
     } catch (e) {
@@ -55,6 +70,20 @@ export class JsonUtils {
    */
   static json2Map(jsonStr: string): Map<string, Object> {
     return new Map(Object.entries(JSON.parse(jsonStr)));
+  }
+
+  /**
+   * JSON 字符串转JSON Object
+   * @param text
+   * @returns
+   */
+  static parse(text: string): Object | null {
+    try {
+      return JSON.parse(text)
+    } catch (e) {
+      console.log(`${JsonUtils}_parse`, e)
+    }
+    return null
   }
 
   /**
@@ -85,40 +114,46 @@ export class JsonUtils {
    */
   static json2Array<T>(cls: ClassConstructor<T>, jsonStr: string | null | undefined): Array<T> | null {
     try {
-
       return (JSON.parse(jsonStr) as ESObject).map(value => JsonUtils.json2Bean<T>(cls,JsonUtils.stringify(value)))
-
-      let obj = JSON.parse(jsonStr)
-
-
-      if (obj instanceof Array) {
-
-        let doubled = obj.map(function(item) {
-          try {
-            let itemJson=JsonUtils.stringify(item)
-            let data =JsonUtils.json2Bean<T>(cls,itemJson)
-
-            console.log('每一行的数据A'+data);
-            console.log('每一行的数据B'+JSON.stringify(data));
-          } catch (e) {
-            console.error(e)
-          }
-
-
-          return item * 2;
-        });
-
-        console.log('转换后的数据'+JSON.stringify(doubled));
-
-        return obj.map(value => plainToInstance(cls, value, {
-          enableCircularCheck: true,
-          enableImplicitConversion: true,
-          exposeDefaultValues: true
-        }))
-      }
-      return null
     } catch (e) {
       return null
+    }
+  }
+
+
+  /**
+   * 检查ArkTS对象是否包含某种属性，可用于JSON.parse解析JSON字符串之后的相关操作。
+   * @param value
+   * @returns
+   */
+  static has(obj: object, property: string): boolean {
+    try {
+      return JSON.has(obj, property)
+    } catch (e) {
+      console.log(`${JsonUtils.name}_parse`, e)
+    }
+    return false
+  }
+
+  /**
+   * 获取JsonObject 中指定属性的值
+   * @param obj
+   * @param key
+   * @param defaultValue
+   * @returns
+   */
+  static getValue<T>(obj: object | undefined | null, key: string, defaultValue: T): T {
+    try {
+      if (obj == undefined || obj == null) {
+        return defaultValue
+      }
+      const value = obj[key];
+      if (value === undefined || value === null) {
+        return defaultValue;
+      }
+      return value;
+    } catch (e) {
+      console.error(`${JsonUtils.name}_getValue`, e)
     }
   }
 }
