@@ -54,5 +54,9 @@ export { FileUtils } from './src/main/ets/FileUtils'
 
 export { AppUtils } from './src/main/ets/AppUtils'
 
+export { Debounce, debounce } from './src/main/ets/throttle_debounce/debounce'
+
+export { Throttle, throttle } from './src/main/ets/throttle_debounce/throttle'
+
 
 export { PromptActionUtils,BaseCustomDialog,PromptActionInfo } from './src/main/ets/PromptActionUtils'
