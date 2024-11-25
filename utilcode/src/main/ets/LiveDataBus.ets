@@ -7,6 +7,7 @@
 import { HashMap } from '@kit.ArkTS'
 import { Callback, emitter } from '@kit.BasicServicesKit'
 import { Lifecycle, LifecycleState } from './lifecycle/Lifecycle'
+import { LogUtils } from './LogUtils'
 
 export class LiveDataBus {
   private dispatch: Dispatch = new Dispatch()
@@ -21,7 +22,7 @@ export class LiveDataBus {
     return liveDataBus
   }
 
-  public static observe<T>(eventName: string, callback: (T?) => void, lifecycle?: Lifecycle) {
+  public static observe<T extends Object>(eventName: string, callback: Callback<T>, lifecycle?: Lifecycle) {
     LiveDataBus.getInstance().dispatch.observe(eventName, callback)
     lifecycle?.addObserver((state: LifecycleState) => {
       if (state == LifecycleState.ToDisappear) {
@@ -31,43 +32,49 @@ export class LiveDataBus {
     return callback
   }
 
-  public static removeObserve<T>(eventId: string, callback?: (T?) => void) {
-    LiveDataBus.getInstance().dispatch.removeObserve(eventId, callback)
+  public static removeObserve<T extends Object>(eventName: string, callback?: Callback<T>) {
+    if(!callback){
+      return
+    }
+    LiveDataBus.getInstance().dispatch.removeObserve(eventName, callback)
   }
 
-  public static post<T>(eventName: string, value: T) {
+  public static post<T extends Object>(eventName: string, value: T) {
     LiveDataBus.getInstance().dispatch.post(eventName, value)
   }
 }
 
 class Dispatch {
-  private callbackMap = new HashMap<string, HashMap<(T?) => void, Callback<emitter.EventData>>>()
+  private callbackMap = new HashMap<string, HashMap<Callback<Object>, Callback<emitter.EventData>>>()
 
-  observe<T>(eventName: string, callback: (T?) => void) {
+  observe<T extends Object>(eventName: string, callback: Callback<T>) {
     if (!this.callbackMap.hasKey(eventName)) {
       this.callbackMap.set(eventName, new HashMap())
     }
     let realCallback: Callback<emitter.EventData> = (eventData) => {
-      callback(eventData.data)
+      callback(eventData.data as T)
     }
-    this.callbackMap.get(eventName).set(callback, realCallback)
+    this.callbackMap.get(eventName).set(callback as Callback<Object>, realCallback)
     emitter.on(eventName, realCallback);
   }
 
-  removeObserve(eventName: string, callback: () => void) {
-    let realCallback: Callback<emitter.EventData>
+  removeObserve<T extends Object>(eventName: string, callback: Callback<T>) {
+    let realCallback: Callback<emitter.EventData> | null = null
     if (this.callbackMap.hasKey(eventName)) {
-      realCallback = this.callbackMap.get(eventName).get(callback)
+      realCallback = this.callbackMap.get(eventName).get(callback as Callback<Object>)
     }
-    if (!this.callbackMap.hasKey(eventName) || this.callbackMap.get(eventName).length == 0) {
-      emitter.off(eventName)
-    } else {
+    if (realCallback) {
       emitter.off(eventName, realCallback)
-      this.callbackMap.get(eventName).remove(callback)
+      let callbackList=this.callbackMap.get(eventName)
+      LogUtils.debug(LiveDataBus.name,'removeObserve:'+eventName+'移除前大小'+callbackList.length)
+      callbackList.remove(callback as Callback<Object>)
+      LogUtils.debug(LiveDataBus.name,'removeObserve:'+eventName+'移除后大小'+callbackList.length)
+    } else if (realCallback) {
+      emitter.off(eventName)
     }
   }
 
-  post<T>(eventName: string, data: T) {
+  post<T extends Object>(eventName: string, data: T) {
     if (emitter.getListenerCount(eventName) > 0) {
       let eventData: emitter.EventData = {
         data: data,
