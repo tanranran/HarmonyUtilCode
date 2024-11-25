@@ -54,6 +54,8 @@ export { FileUtils } from './src/main/ets/FileUtils'
 
 export { AppUtils } from './src/main/ets/AppUtils'
 
+export { KeyBoardUtils } from './src/main/ets/KeyBoardUtils'
+
 export { Debounce, debounce } from './src/main/ets/throttle_debounce/debounce'
 
 export { Throttle, throttle } from './src/main/ets/throttle_debounce/throttle'
