@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.0.9] 2024-11-25
+修复LiveDataBus 广播注销不生效的问题
+新增KeyBoardUtils 工具类
+
 ## [v0.0.8] 2024-09-19
 升级ohos/crypto-js
 
