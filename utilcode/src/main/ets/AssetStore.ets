@@ -182,6 +182,8 @@ export class AssetStore {
       }
       if (res.length < 1) {
         return { isSuccess: false };
+      }else{
+        return { isSuccess: true };
       }
     }
     return { isSuccess: false };
@@ -268,7 +270,7 @@ export class AssetStore {
 
   private static arrayToString(arr: Uint8Array): string {
     let textDecoder = util.TextDecoder.create('utf-8', { ignoreBOM: true });
-    let str = textDecoder.decodeWithStream(arr, { stream: false });
+    let str = textDecoder.decodeToString(arr, { stream: false });
     return str;
   }
 
